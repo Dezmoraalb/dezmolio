@@ -21,7 +21,7 @@ const Freelance = () => {
       <div className="relative -mb-20 md:-mb-32">
         <div className="flex justify-center">
           <img
-            src={`${import.meta.env.BASE_URL}Illustrations/freelancer_vibs.svg`}
+            src="/Illustrations/freelancer_vibs.svg"
             alt="Freelancer illustration"
             className="w-full max-w-5xl h-auto px-4 relative z-10"
           />

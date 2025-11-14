@@ -66,7 +66,7 @@ const ProjectDetail = () => {
 
         <div className="aspect-[21/9] rounded-2xl overflow-hidden mb-12 animate-fade-in" style={{ animationDelay: '0.1s' }}>
           <img
-            src={`${import.meta.env.BASE_URL}${project.image.replace('/', '')}`}
+            src={project.image}
             alt={project.title}
             className="w-full h-full object-cover"
           />
