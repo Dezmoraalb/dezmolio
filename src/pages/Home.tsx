@@ -178,7 +178,8 @@ const Home = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
             I'm proud to have collaborated with some awesome companies:
           </h2>
-          <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 max-w-6xl mx-auto">
+            {/* First row - 3 companies */}
             {/* Asia Print */}
             <a
               href="https://www.instagram.com/asiaprint_ua/"
@@ -207,7 +208,7 @@ const Home = () => {
               <h3 className="text-2xl font-bold text-foreground">Martlet Auto</h3>
             </a>
 
-            {/* Brand 3 - Replace with actual data */}
+            {/* LiveLab */}
             <a
               href="#"
               target="_blank"
@@ -222,11 +223,12 @@ const Home = () => {
               <h3 className="text-2xl font-bold text-foreground">LiveLab</h3>
             </a>
 
+            {/* Second row - 2 companies centered */}
             <a
               href="https://t.me/tengoku_dojo_bot"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
+              className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity md:col-start-2"
             >
               <img
                 src="/Illustrations/japan_9ygx.svg"
