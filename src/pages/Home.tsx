@@ -178,55 +178,52 @@ const Home = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
             I'm proud to have collaborated with some awesome companies:
           </h2>
-          <div className="max-w-6xl mx-auto">
-            {/* First row - 3 companies */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-12 md:mb-16">
-              {/* Asia Print */}
-              <a
-                href="https://www.instagram.com/asiaprint_ua/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
-              >
-                <img
-                  src={`${import.meta.env.BASE_URL}Illustrations/photocopy_k0g7.svg`}
-                  alt="Asia Print"
-                  className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
-                />
-                <h3 className="text-2xl font-bold text-foreground">Asia Print</h3>
-              </a>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 max-w-6xl mx-auto">
+            {/* Asia Print */}
+            <a
+              href="https://www.instagram.com/asiaprint_ua/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}Illustrations/photocopy_k0g7.svg`}
+                alt="Asia Print"
+                className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
+              />
+              <h3 className="text-2xl font-bold text-foreground">Asia Print</h3>
+            </a>
 
-              {/* Martlet Auto */}
-              <a
-                href="mailto:info@martlet.com.ua"
-                className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
-              >
-                <img
-                  src={`${import.meta.env.BASE_URL}Illustrations/delivery-truck_mjui.svg`}
-                  alt="Martlet Auto"
-                  className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
-                />
-                <h3 className="text-2xl font-bold text-foreground">Martlet Auto</h3>
-              </a>
+            {/* Martlet Auto */}
+            <a
+              href="mailto:info@martlet.com.ua"
+              className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}Illustrations/delivery-truck_mjui.svg`}
+                alt="Martlet Auto"
+                className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
+              />
+              <h3 className="text-2xl font-bold text-foreground">Martlet Auto</h3>
+            </a>
 
-              {/* LiveLab */}
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
-              >
-                <img
-                  src={`${import.meta.env.BASE_URL}Illustrations/video-influencer_7ak0.svg`}
-                  alt="LiveLab"
-                  className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
-                />
-                <h3 className="text-2xl font-bold text-foreground">LiveLab</h3>
-              </a>
-            </div>
+            {/* LiveLab */}
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}Illustrations/video-influencer_7ak0.svg`}
+                alt="LiveLab"
+                className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
+              />
+              <h3 className="text-2xl font-bold text-foreground">LiveLab</h3>
+            </a>
 
             {/* Second row - 2 companies centered */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
+            <div className="md:col-span-3 flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
               <a
                 href="https://t.me/tengoku_dojo_bot"
                 target="_blank"
