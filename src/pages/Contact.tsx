@@ -16,10 +16,27 @@ const Contact = () => {
     message: "",
   });
 
-  // Ініціалізуємо EmailJS при завантаженні компонента
+  // Initialize EmailJS on component mount
   useEffect(() => {
     initEmailJS();
   }, []);
+  
+  // Handle email validation with English messages
+  const handleEmailInvalid = (e: React.InvalidEvent<HTMLInputElement>) => {
+    const target = e.target;
+    if (target.validity.valueMissing) {
+      target.setCustomValidity('Please enter an email address.');
+    } else if (target.validity.typeMismatch) {
+      target.setCustomValidity('Please enter a valid email address.');
+    } else {
+      target.setCustomValidity('');
+    }
+  };
+  
+  const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.target.setCustomValidity('');
+    handleChange(e);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +44,7 @@ const Contact = () => {
     setSubmitStatus('');
 
     try {
-      // Спробуємо відправити через EmailJS
+      // Try to send via EmailJS
       const result = await sendEmail(formData);
       
       if (result.success) {
@@ -38,8 +55,8 @@ const Contact = () => {
           description: "Thanks for reaching out. I'll get back to you soon.",
         });
       } else {
-        // Якщо EmailJS не працює, використовуємо fallback
-        console.log('EmailJS не працює, використовуємо fallback');
+        // If EmailJS doesn't work, use fallback
+        console.log('EmailJS not working, using fallback');
         sendEmailFallback(formData);
         setSubmitStatus('success');
         setFormData({ name: "", email: "", subject: "", message: "" });
@@ -50,8 +67,8 @@ const Contact = () => {
       }
       
     } catch (error) {
-      console.error('Помилка відправки:', error);
-      // У разі критичної помилки, використовуємо fallback
+      console.error('Error sending:', error);
+      // In case of critical error, use fallback
       try {
         sendEmailFallback(formData);
         setSubmitStatus('success');
@@ -61,7 +78,7 @@ const Contact = () => {
           description: "Your email client will open with the message.",
         });
       } catch (fallbackError) {
-        console.error('Fallback також не працює:', fallbackError);
+        console.error('Fallback also failed:', fallbackError);
         setSubmitStatus('error');
         toast({
           title: "Error",
@@ -132,7 +149,8 @@ const Contact = () => {
                   name="email"
                   type="email"
                   value={formData.email}
-                  onChange={handleChange}
+                  onChange={handleEmailInput}
+                  onInvalid={handleEmailInvalid}
                   required
                   placeholder="your.email@example.com"
                   className="w-full h-12 text-base"
