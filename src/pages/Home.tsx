@@ -19,7 +19,7 @@ const Home = () => {
           {/* Avatar Illustration */}
           <div className="flex justify-center mb-8">
             <img
-              src="/Illustrations/coding_joxb.svg"
+              src={`${import.meta.env.BASE_URL}Illustrations/coding_joxb.svg`}
               alt="Coding illustration"
               className="w-64 h-64 md:w-80 md:h-80 max-w-full"
             />
@@ -31,7 +31,7 @@ const Home = () => {
       <div className="relative -mb-20 md:-mb-32">
         <div className="flex justify-center">
           <img
-            src="/Illustrations/in-sync_3wdt.svg"
+            src={`${import.meta.env.BASE_URL}Illustrations/in-sync_3wdt.svg`}
             alt="In sync illustration"
             className="w-full max-w-5xl h-auto px-4 relative z-10"
           />
@@ -144,7 +144,7 @@ const Home = () => {
                 className="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-muted"
               >
                 <img
-                  src={project.image}
+                  src={`${import.meta.env.BASE_URL}${project.image.replace('/', '')}`}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
@@ -187,7 +187,7 @@ const Home = () => {
               className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
             >
               <img
-                src="/Illustrations/photocopy_k0g7.svg"
+                src={`${import.meta.env.BASE_URL}Illustrations/photocopy_k0g7.svg`}
                 alt="Asia Print"
                 className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
               />
@@ -200,7 +200,7 @@ const Home = () => {
               className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
             >
               <img
-                src="/Illustrations/delivery-truck_mjui.svg"
+                src={`${import.meta.env.BASE_URL}Illustrations/delivery-truck_mjui.svg`}
                 alt="Martlet Auto"
                 className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
               />
@@ -215,7 +215,7 @@ const Home = () => {
               className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
             >
               <img
-                src="/Illustrations/video-influencer_7ak0.svg"
+                src={`${import.meta.env.BASE_URL}Illustrations/video-influencer_7ak0.svg`}
                 alt="LiveLab"
                 className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
               />
@@ -229,7 +229,7 @@ const Home = () => {
               className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
             >
               <img
-                src="/Illustrations/japan_9ygx.svg"
+                src={`${import.meta.env.BASE_URL}Illustrations/japan_9ygx.svg`}
                 alt="Tengoku"
                 className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
               />
@@ -243,7 +243,7 @@ const Home = () => {
               className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
             >
               <img
-                src="/Illustrations/build-your-home_5opd.svg"
+                src={`${import.meta.env.BASE_URL}Illustrations/build-your-home_5opd.svg`}
                 alt="Estate Agency"
                 className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
               />
@@ -281,7 +281,7 @@ const Home = () => {
                     {project.icon && <span className="text-3xl">{project.icon}</span>}
                     {project.image && (
                       <img
-                        src={project.image}
+                        src={`${import.meta.env.BASE_URL}${project.image.replace('/', '')}`}
                         alt={project.title}
                         className="w-12 h-12 rounded-lg object-cover"
                       />
