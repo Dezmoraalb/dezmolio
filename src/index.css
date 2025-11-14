@@ -18,8 +18,8 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 20%;
 
-    /* Primary: Rich Blue (#0052CC ≈ 214 100% 40%) */
-    --primary: 214 100% 40%;
+    /* Primary: Purple (#6633FF ≈ 260 100% 60%) */
+    --primary: 260 100% 60%;
     --primary-foreground: 0 0% 100%;
 
     /* Secondary: Very light gray for subtle backgrounds */
@@ -29,8 +29,8 @@ All colors MUST be HSL.
     --muted: 215 20% 92%;
     --muted-foreground: 215 15% 50%;
 
-    /* Accent: slightly darker blue for hover states */
-    --accent: 214 100% 35%;
+    /* Accent: Teal for accents */
+    --accent: 180 60% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;

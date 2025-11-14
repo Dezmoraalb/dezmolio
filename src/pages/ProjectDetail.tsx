@@ -12,11 +12,11 @@ const ProjectDetail = () => {
     return (
       <div className="min-h-screen pt-24 pb-16">
         <div className="container-custom text-center">
-          <h1 className="text-4xl font-bold mb-4">Проект не знайдено</h1>
+          <h1 className="text-4xl font-bold mb-4">Project not found</h1>
           <Link to="/">
             <Button variant="outline">
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Повернутися до проектів
+              Back to projects
             </Button>
           </Link>
         </div>
@@ -25,17 +25,17 @@ const ProjectDetail = () => {
   }
 
   const categoryLabels = {
-    'telegram-bot': 'Telegram Бот',
-    'web-app': 'Веб-додаток',
-    'automation': 'Автоматизація',
+    'telegram-bot': 'Telegram Bot',
+    'web-app': 'Web App',
+    'automation': 'Automation',
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
+    <div className="min-h-screen pt-8 pb-16">
       <div className="container-custom">
         <Link to="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Назад до проектів
+          Back to projects
         </Link>
 
         <div className="mb-8 animate-fade-in">
@@ -48,7 +48,7 @@ const ProjectDetail = () => {
                 <Button asChild>
                   <a href={project.demo} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Живе Демо
+                    Live Demo
                   </a>
                 </Button>
               )}
@@ -56,7 +56,7 @@ const ProjectDetail = () => {
                 <Button variant="outline" asChild>
                   <a href={project.github} target="_blank" rel="noopener noreferrer">
                     <Github className="w-4 h-4 mr-2" />
-                    Код
+                    Code
                   </a>
                 </Button>
               )}
@@ -75,21 +75,21 @@ const ProjectDetail = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
           <div className="lg:col-span-2 space-y-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Проблема</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-foreground">Problem</h2>
               <p className="text-muted-foreground leading-relaxed">
                 {project.problem}
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Рішення</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-foreground">Solution</h2>
               <p className="text-muted-foreground leading-relaxed">
                 {project.solution}
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Технічний Стек</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-foreground">Tech Stack</h2>
               <div className="flex flex-wrap gap-2">
                 {project.techStack.map((tech) => (
                   <Badge key={tech} variant="secondary" className="text-sm">
@@ -103,17 +103,17 @@ const ProjectDetail = () => {
           <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <div className="bg-card border border-border rounded-xl p-6 space-y-4">
               <div>
-                <p className="text-sm text-muted-foreground mb-1">Тип</p>
+                <p className="text-sm text-muted-foreground mb-1">Type</p>
                 <p className="font-medium text-foreground">{categoryLabels[project.category]}</p>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground mb-1">Статус</p>
+                <p className="text-sm text-muted-foreground mb-1">Status</p>
                 <Badge variant={project.status === 'active' ? 'default' : 'secondary'}>
-                  {project.status === 'active' ? 'Активний' : 'Завершений'}
+                  {project.status === 'active' ? 'Active' : 'Completed'}
                 </Badge>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground mb-1">Рік</p>
+                <p className="text-sm text-muted-foreground mb-1">Year</p>
                 <p className="font-medium text-foreground">{project.year}</p>
               </div>
             </div>

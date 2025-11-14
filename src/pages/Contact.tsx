@@ -1,33 +1,78 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Send, Linkedin, Github } from "lucide-react";
+import { sendEmail, sendEmailFallback, initEmailJS } from "@/config/emailjs";
 
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | ''>('');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
+
+  // Ініціалізуємо EmailJS при завантаженні компонента
+  useEffect(() => {
+    initEmailJS();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('');
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    toast({
-      title: "Повідомлення надіслано!",
-      description: "Дякую за ваше повідомлення. Я зв'яжусь з вами найближчим часом.",
-    });
-
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+    try {
+      // Спробуємо відправити через EmailJS
+      const result = await sendEmail(formData);
+      
+      if (result.success) {
+        setSubmitStatus('success');
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        toast({
+          title: "Message sent!",
+          description: "Thanks for reaching out. I'll get back to you soon.",
+        });
+      } else {
+        // Якщо EmailJS не працює, використовуємо fallback
+        console.log('EmailJS не працює, використовуємо fallback');
+        sendEmailFallback(formData);
+        setSubmitStatus('success');
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        toast({
+          title: "Opening email client...",
+          description: "Your email client will open with the message.",
+        });
+      }
+      
+    } catch (error) {
+      console.error('Помилка відправки:', error);
+      // У разі критичної помилки, використовуємо fallback
+      try {
+        sendEmailFallback(formData);
+        setSubmitStatus('success');
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        toast({
+          title: "Opening email client...",
+          description: "Your email client will open with the message.",
+        });
+      } catch (fallbackError) {
+        console.error('Fallback також не працює:', fallbackError);
+        setSubmitStatus('error');
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(''), 5000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -38,130 +83,105 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
+    <div className="min-h-screen pb-16">
       <div className="container-custom">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Зв'язатися зі мною
+        <div className="max-w-3xl mx-auto">
+          {/* Avatar Illustration - positioned so header ends at its middle */}
+          <div className="flex justify-center -mt-16 md:-mt-20 mb-12">
+            <img
+              src="/Illustrations/coding_joxb.svg"
+              alt="Coding illustration"
+              className="w-40 h-40 md:w-48 md:h-48 max-w-full"
+            />
+          </div>
+
+          {/* Greeting */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              Thanks for taking the time to reach out.
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Є питання, пропозиція проекту, або просто хочете поговорити? 
-              Я завжди відкритий до нових можливостей.
+            <p className="text-xl md:text-2xl text-muted-foreground">
+              How can I help you today?
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                    Ім'я
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Ваше ім'я"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                    Повідомлення
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    placeholder="Розкажіть про ваш проект або питання..."
-                    rows={6}
-                  />
-                </div>
-
-                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full">
-                  {isSubmitting ? "Надсилання..." : "Надіслати повідомлення"}
-                </Button>
-              </form>
-            </div>
-
-            <div className="space-y-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className="bg-card border border-border rounded-xl p-6">
-                <h2 className="text-xl font-semibold mb-6 text-foreground">
-                  Прямі Контакти
-                </h2>
-                
-                <div className="space-y-4">
-                  <a
-                    href="mailto:pasha34523452@gmail.com"
-                    className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Mail className="w-5 h-5" />
-                    <span>pasha34523452@gmail.com</span>
-                  </a>
-
-                  <a
-                    href="https://t.me/pasha_polyuh"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Send className="w-5 h-5" />
-                    <span>@pasha_polyuh (Пріоритет)</span>
-                  </a>
-
-                  <a
-                    href="https://linkedin.com/in/yourusername"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                    <span>LinkedIn</span>
-                  </a>
-
-                  <a
-                    href="https://github.com/yourusername"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Github className="w-5 h-5" />
-                    <span>GitHub</span>
-                  </a>
-                </div>
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <label htmlFor="name" className="block text-base font-medium text-foreground mb-3">
+                  Name
+                </label>
+                <Input
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your name"
+                  className="w-full h-12 text-base"
+                />
               </div>
 
-              <div className="bg-primary/5 border border-primary/20 rounded-xl p-6">
-                <h3 className="font-semibold text-foreground mb-2">
-                  💡 Швидка відповідь
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Найшвидший спосіб зв'язатися зі мною — це Telegram. 
-                  Зазвичай відповідаю протягом кількох годин.
-                </p>
+              <div>
+                <label htmlFor="email" className="block text-base font-medium text-foreground mb-3">
+                  Email
+                </label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="your.email@example.com"
+                  className="w-full h-12 text-base"
+                />
               </div>
             </div>
-          </div>
+
+            <div>
+              <label htmlFor="subject" className="block text-base font-medium text-foreground mb-3">
+                Subject
+              </label>
+              <Input
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                placeholder="What's this about?"
+                className="w-full h-12 text-base"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className="block text-base font-medium text-foreground mb-3">
+                Message
+              </label>
+              <Textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                placeholder="Tell me about your project or question..."
+                rows={8}
+                className="w-full text-base"
+              />
+            </div>
+
+            <div className="flex justify-center pt-4">
+              <Button
+                type="submit"
+                size="lg"
+                disabled={isSubmitting}
+                variant="outline"
+                className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-10 py-6 text-base font-bold h-auto rounded-full"
+              >
+                {isSubmitting ? "Submitting..." : "Submit"}
+              </Button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
