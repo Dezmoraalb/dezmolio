@@ -89,7 +89,7 @@ const Contact = () => {
           {/* Avatar Illustration - positioned so header ends at its middle */}
           <div className="flex justify-center -mt-16 md:-mt-20 mb-12">
             <img
-              src="/Illustrations/coding_joxb.svg"
+              src={`${import.meta.env.BASE_URL}Illustrations/coding_joxb.svg`}
               alt="Coding illustration"
               className="w-40 h-40 md:w-48 md:h-48 max-w-full"
             />

@@ -34,7 +34,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.PROD ? "/dezmolio" : ""}>
         <AppContent />
       </BrowserRouter>
     </TooltipProvider>
