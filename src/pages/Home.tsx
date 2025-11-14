@@ -222,36 +222,50 @@ const Home = () => {
               <h3 className="text-2xl font-bold text-foreground">LiveLab</h3>
             </a>
 
-            {/* Second row - 2 companies centered */}
-            <div className="md:col-span-3 flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
-              <a
-                href="https://t.me/tengoku_dojo_bot"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
-              >
-                <img
-                  src={`${import.meta.env.BASE_URL}Illustrations/japan_9ygx.svg`}
-                  alt="Tengoku"
-                  className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
-                />
-                <h3 className="text-2xl font-bold text-foreground">Tengoku</h3>
-              </a>
+            {/* Tengoku */}
+            <a
+              href="https://t.me/tengoku_dojo_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}Illustrations/japan_9ygx.svg`}
+                alt="Tengoku"
+                className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
+              />
+              <h3 className="text-2xl font-bold text-foreground">Tengoku</h3>
+            </a>
 
-              <a
-                href="https://t.me/modern_estate_agency_ukraine"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
-              >
-                <img
-                  src={`${import.meta.env.BASE_URL}Illustrations/build-your-home_5opd.svg`}
-                  alt="Estate Agency"
-                  className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
-                />
-                <h3 className="text-2xl font-bold text-foreground">Estate Agency</h3>
-              </a>
-            </div>
+            {/* Estate Agency */}
+            <a
+              href="https://t.me/modern_estate_agency_ukraine"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}Illustrations/build-your-home_5opd.svg`}
+                alt="Estate Agency"
+                className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
+              />
+              <h3 className="text-2xl font-bold text-foreground">Estate Agency</h3>
+            </a>
+
+            {/* EasyTow */}
+            <a
+              href="https://t.me/EasyTowBot"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}Illustrations/heavy-box_ofui.svg`}
+                alt="EasyTow"
+                className="w-32 h-32 md:w-40 md:h-40 transition-transform duration-300 group-hover:scale-110"
+              />
+              <h3 className="text-2xl font-bold text-foreground">EasyTow</h3>
+            </a>
           </div>
         </div>
       </section>
