@@ -1,73 +1,178 @@
-# Welcome to your Lovable project
+# Pasha's Portfolio - Full Stack Developer & Freelancer
 
-## Project info
+Modern portfolio website showcasing my work as a Python Full-Stack Developer and Freelancer. Built with React, TypeScript, and Tailwind CSS, inspired by [mattfarley.ca](https://mattfarley.ca/).
 
-**URL**: https://lovable.dev/projects/9d25160e-125e-4e5c-aaa1-dcaf6c5fdf8c
+🌐 **Live Site**: [https://dezmoraalb.github.io/dezmolio/](https://dezmoraalb.github.io/dezmolio/)
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+- **Modern Design** - Clean, minimalist design with purple accent colors
+- **Responsive Layout** - Fully responsive and mobile-friendly
+- **Contact Form** - Integrated EmailJS for contact form submissions
+- **Project Showcase** - Display of recent work and startup projects
+- **Freelance Services** - Dedicated page for freelance services
+- **Smooth Animations** - Smooth transitions and hover effects
+- **SEO Optimized** - Optimized for search engines
 
-**Use Lovable**
+## 🛠️ Technologies
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9d25160e-125e-4e5c-aaa1-dcaf6c5fdf8c) and start prompting.
+- **Frontend Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui (Radix UI)
+- **Routing**: React Router DOM
+- **Icons**: Lucide React
+- **Email Service**: EmailJS
+- **Deployment**: GitHub Pages
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📋 Project Structure
 
-**Use your preferred IDE**
+```
+dezmolio/
+├── public/
+│   ├── Illustrations/     # SVG illustrations
+│   └── photos/            # Project images
+├── src/
+│   ├── components/        # Reusable components
+│   │   ├── Header.tsx
+│   │   └── Footer.tsx
+│   ├── pages/             # Page components
+│   │   ├── Home.tsx
+│   │   ├── Contact.tsx
+│   │   ├── Freelance.tsx
+│   │   └── ProjectDetail.tsx
+│   ├── data/              # Data files
+│   │   └── projects.ts
+│   ├── config/            # Configuration
+│   │   └── emailjs.ts
+│   └── App.tsx
+├── package.json
+└── vite.config.ts
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🎯 Pages
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. **Home** - Hero section, skills, recent work, companies, startup projects
+2. **Contact** - Contact form with EmailJS integration
+3. **Freelance** - Freelance services and offerings
+4. **Project Detail** - Individual project pages
 
-Follow these steps:
+## 📦 Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- Node.js (version 14 or higher)
+- npm or yarn
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Setup Steps
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/Dezmoraalb/dezmolio.git
+cd dezmolio
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Start development server**
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The site will be available at: `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+4. **Build for production**
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🚀 Deployment to GitHub Pages
 
-## What technologies are used for this project?
+The project is configured for automatic deployment to GitHub Pages.
 
-This project is built with:
+### Deploy Command
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+npm run deploy
+```
 
-## How can I deploy this project?
+This command will:
+1. Build the project for production
+2. Deploy the `dist` folder to the `gh-pages` branch
 
-Simply open [Lovable](https://lovable.dev/projects/9d25160e-125e-4e5c-aaa1-dcaf6c5fdf8c) and click on Share -> Publish.
+### GitHub Pages Settings
 
-## Can I connect a custom domain to my Lovable project?
+1. Go to repository Settings → Pages
+2. Select source: `Deploy from a branch`
+3. Select branch: `gh-pages`
+4. Select folder: `/ (root)`
+5. Save changes
 
-Yes, you can!
+The site will be available at: `https://dezmoraalb.github.io/dezmolio/`
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📧 Contact Form Setup
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+The contact form uses EmailJS for email delivery. Configure your EmailJS settings in `src/config/emailjs.ts`:
+
+```typescript
+export const emailjsConfig = {
+  serviceId: 'your_service_id',
+  templateId: 'your_template_id',
+  publicKey: 'your_public_key',
+};
+```
+
+## 🎨 Design System
+
+### Color Palette
+
+- **Primary**: Purple (`#6633FF`)
+- **Accent**: Teal (`#00BFA5`)
+- **Background**: White/Light Gray
+- **Text**: Dark Gray/Black
+
+### Typography
+
+- Clean, modern sans-serif fonts
+- Responsive font sizes
+- Clear hierarchy
+
+## 📱 Responsive Breakpoints
+
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
+
+## 🔧 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run deploy` - Deploy to GitHub Pages
+- `npm run lint` - Run ESLint
+
+## 📄 License
+
+This project is created for portfolio purposes and is the intellectual property of Pavlo Polyukhovich.
+
+## 👤 Author
+
+**Pavlo Polyukhovich (Pasha)**
+
+- 📧 Email: pasha34523452@gmail.com
+- 💬 Telegram: [@pasha_polyuh](https://t.me/pasha_polyuh)
+- 💼 LinkedIn: [Pavlo Poliukhovych](https://www.linkedin.com/in/pavlo-poluikhovych-09714131a/)
+- 🐙 GitHub: [@Dezmoraalb](https://github.com/Dezmoraalb)
+- 📝 Portfolio: [Notion](https://www.notion.so/Pavlo-Polyukhovich-861c0209446a42259af24b931fe4122d)
+
+---
+
+**Built with ❤️ using React, TypeScript, and Tailwind CSS**  
+© 2025 Pavlo Polyukhovich. All rights reserved.
